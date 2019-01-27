@@ -19,17 +19,17 @@ const styles = {
 };
 
 let id = 0;
-function createData(name, calories, fat, carbs, protein) {
+function createData(name, ticker, book_value, market_value, change) {
   id += 1;
-  return { id, name, calories, fat, carbs, protein };
+  return { id, name, ticker, book_value, market_value, change };
 }
 
 const data = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
+  createData('Bitcoin', "BTC", "$1,863.46", "$3,599.73", "+52%"),
+  createData('Ethereum', "ETH", "$58.36", "$116.06", "+50%"),
+  createData('Bitocin Cash', "BCH", "$66.89", "$127.15", "+53%"),
+  createData('Monero', "XMR", "$27.39", "$45.68", "+60%"),
+  createData('DASH', "DASH", "$35.85", "$73.77", "+49%"),
 ];
 
 function SimpleTable(props) {
@@ -40,11 +40,11 @@ function SimpleTable(props) {
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat (g)</TableCell>
-            <TableCell align="right">Carbs (g)</TableCell>
-            <TableCell align="right">Protein (g)</TableCell>
+            <TableCell>Cryptocurrency</TableCell>
+            <TableCell align="center">Ticker</TableCell>
+            <TableCell align="right">Book Value</TableCell>
+            <TableCell align="right">Market Value</TableCell>
+            <TableCell align="right">% Change</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -53,10 +53,10 @@ function SimpleTable(props) {
               <TableCell component="th" scope="row">
                 {n.name}
               </TableCell>
-              <TableCell align="right">{n.calories}</TableCell>
-              <TableCell align="right">{n.fat}</TableCell>
-              <TableCell align="right">{n.carbs}</TableCell>
-              <TableCell align="right">{n.protein}</TableCell>
+              <TableCell align="center">{n.ticker}</TableCell>
+              <TableCell align="right">{n.book_value}</TableCell>
+              <TableCell align="right">{n.market_value}</TableCell>
+              <TableCell align="right">{n.change}</TableCell>
             </TableRow>
           ))}
         </TableBody>

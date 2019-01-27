@@ -4,32 +4,31 @@ import './SafeMath.sol';
 /** @title CryptoFundFactory dApp */
 contract CryptoFundFactory {                                             // Declaration of Crypto Fund Factory Contract
     constructor() public {
-        factoryOwner = msg.sender;                                     // Sets the deploying developer as contract as owner 
+        factoryOwner = msg.sender;                                     // Sets the deploying developer as contract owner 
     }
 
     using SafeMath for uint256;                                 // SafeMath library prevents overflow when working with uint                     
-    address factoryOwner;                                              // Specifies the owner address of the contract
-    bool isStopped = false;                                     // Determins contracts emergency stopped state (circuit breaker)
-    uint public fundCount;                                    // Acs as index/key of struct mappings
+    address factoryOwner;                                           
+    bool isStopped = false;                                
+    uint public fundCount;                                    
     uint defaultOpenFee = 0.5;
     uint defaultCloseFee = 0.1;
-    enum FoundState {Open, Closed}                             // Current state of a BountyItem.
-    struct Allocation {                                   // Declaration of HunterSubmission struct type
-        string ticker;                                            // Solution body of text.
-        uint amount;                                         // Address of a Bounty Hunter.
+    enum FoundState {Open, Closed}                           
+    struct Allocation {                                   
+        string ticker;                                         
+        uint amount;                                       
     }
-    struct Fund {                                         // Declaration of BountyList struct type
-        address funderAccount;                                   // Address of a Bounty Poster.
-        uint seedAmount;                                            // Reward Amount for submitting an accepted HunterSubmission. 
-        uint openDateUnixTimestamp
-        uint closeDateUnixTimestamp
-        Allocation openAllocation []
-        Allocation closeAllocation [] 
-        // uint feesCollected;
-        FundState fundState;                                      // Current state of a BountyItem.
-    }                                                           //      for a particular Bountyitem.
+    struct Fund {                                         
+        address funderAccount;                                  
+        uint seedAmount;                                           
+        uint openDateUnixTimestamp;
+        uint closeDateUnixTimestamp;
+        Allocation openAllocation [];
+        Allocation closeAllocation [];
+        FundState fundState;                                      
+    }                                                          
 
-    mapping(uint => Fund) public FundList;              // Declaration of BountyList storage. 
+    mapping(uint => Fund) public FundList;               
 
 
     // event AcceptSubmission (uint bountyId, uint submissionId);
@@ -84,7 +83,7 @@ contract CryptoFundFactory {                                             // Decl
 // set seedFunder
 // accept funding
 // close/liquidate
-// - send split to partentseed funder (minus fees)
+// - send split to partentseed funder (minus fees) * fund title
 // - update parent data?
 
 contract CryptoFund {                                             // Declaration of Crypto Fund Factory Contract
@@ -94,6 +93,7 @@ contract CryptoFund {                                             // Declaration
     }
 
     using SafeMath for uint256;                                 // SafeMath library prevents overflow when working with uint                     
+    string title; 
     address parentContract;
     address fundOwner;                                              // Specifies the owner address of the contract
     uint seedAmount;                                            // Reward Amount for submitting an accepted HunterSubmission. 

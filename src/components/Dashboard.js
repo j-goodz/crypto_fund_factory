@@ -12,9 +12,11 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import MenuIcon from '@material-ui/icons/Menu';
+import InfoIcon from '@material-ui/icons/Info';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import { mainListItems, secondaryListItems } from './listItems';
+import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
+import { mainListItems, openListItems, closedListItems } from './listItems';
 import SimpleLineChart from './SimpleLineChart';
 import SimpleTable from './SimpleTable';
 
@@ -97,6 +99,8 @@ const styles = theme => ({
   },
 });
 
+console.log(mainListItems)
+
 class Dashboard extends React.Component {
   state = {
     open: true,
@@ -132,20 +136,35 @@ class Dashboard extends React.Component {
             >
               <MenuIcon />
             </IconButton>
+ 
+            <IconButton color="inherit">
+                <InfoIcon />
+                &nbsp;
+                <Typography
+                component="h1"
+                variant="h6"
+                color="inherit"
+                noWrap
+                className={classes.title}
+                >
+                Crypto Portfolio Factory
+                </Typography>
+            </IconButton>
+
+
             <Typography
               component="h1"
               variant="h6"
               color="inherit"
+              align="right"
               noWrap
               className={classes.title}
             >
-              Dashboard
+            <AccountBalanceWalletIcon />
+              &nbsp;Ether Account
             </Typography>
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
+
+
           </Toolbar>
         </AppBar>
         <Drawer
@@ -163,18 +182,20 @@ class Dashboard extends React.Component {
           <Divider />
           <List>{mainListItems}</List>
           <Divider />
-          <List>{secondaryListItems}</List>
+          <List>{openListItems}</List>
+          <Divider />
+          <List>{closedListItems}</List>
         </Drawer>
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
           <Typography variant="h4" gutterBottom component="h2">
-            Orders
+            Historical Data
           </Typography>
           <Typography component="div" className={classes.chartContainer}>
             <SimpleLineChart />
           </Typography>
           <Typography variant="h4" gutterBottom component="h2">
-            Products
+            Portflio Performance
           </Typography>
           <div className={classes.tableContainer}>
             <SimpleTable />
