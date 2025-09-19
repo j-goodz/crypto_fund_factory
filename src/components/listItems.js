@@ -31,12 +31,12 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Performance" />
     </ListItem>
-    <ListItem button>
+    {/* <ListItem button>
       <ListItemIcon>
         <InfoIcon />
       </ListItemIcon>
       <ListItemText primary="About dApp" />
-    </ListItem>
+    </ListItem> */}
   </div>
 );
 

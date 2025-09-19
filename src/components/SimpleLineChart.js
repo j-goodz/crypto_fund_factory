@@ -8,6 +8,14 @@ import CartesianGrid from 'recharts/lib/cartesian/CartesianGrid';
 import Tooltip from 'recharts/lib/component/Tooltip';
 import Legend from 'recharts/lib/component/Legend';
 
+
+// import Stringify from 'react-stringify'
+
+
+// import * as actionCreators from '../actions';
+// import { connect } from 'react-redux';
+
+
 const data = [
   { name: 'Mon', Visits: 2200, Orders: 3400 },
   { name: 'Tue', Visits: 1280, Orders: 2398 },
@@ -56,6 +64,9 @@ const data = [
 function SimpleLineChart() {
   return (
     // 99% per https://github.com/recharts/recharts/issues/172
+
+
+    
     <ResponsiveContainer width="99%" height={320}>
       <LineChart data={data}>
         <XAxis dataKey="name" />
@@ -69,5 +80,19 @@ function SimpleLineChart() {
     </ResponsiveContainer>
   );
 }
+
+
+
+
+// const mapStateToProps=(state) => {
+//   const { btc_price, eth_price, interval } = state
+//   return { btc_price, eth_price, interval }
+// };
+
+
+// export default connect (SimpleLineChart, actionCreators)(SimpleLineChart);
+
+
+
 
 export default SimpleLineChart;

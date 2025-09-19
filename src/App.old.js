@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 import Dashboard from './components/Dashboard'
+import Stringify from 'react-stringify'
 import { HiddenOnlyAuth, VisibleOnlyAuth } from './util/wrappers.js'
+
+
 
 // UI Components
 import LoginButtonContainer from './user/ui/loginbutton/LoginButtonContainer'
@@ -16,11 +19,17 @@ import LogoutButtonContainer from './user/ui/logoutbutton/LogoutButtonContainer'
 class App extends Component {
   render() {
     
+
+    //on app load, req accounts for specific meta mask account, then only load those cryptocurrency prices and dates
     
     return (
       <div className="App">
 
+        {/* <Stringify value={{ foo: 'foo', bar: 'bar' }} space="💩" /> */}
+ 
         <Dashboard />
+
+
         {/* <nav className="navbar pure-menu pure-menu-horizontal">
           <Link to="/" className="pure-menu-heading pure-menu-link">Truffle Box</Link>
           <ul className="pure-menu-list navbar-right">
@@ -36,6 +45,25 @@ class App extends Component {
     );
   }
 }
+
+
+// const mapStateToProps=(state) => {
+//   const { btc_price, eth_price, interval } = state
+//   return { btc_price, eth_price, interval }
+// };
+
+
+userAccount, userPortfolioContracts,
+confirmations: 0,
+openAllocation: [],
+closeAllocation: [],
+newAccountState: null,
+interval: 60,
+btc_price: 0,
+eth_price: 0
+
+
+// export default connect (mapStateToProps, actionCreators)(App);
 
 export default App
 

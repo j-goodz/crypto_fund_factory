@@ -20,6 +20,15 @@ import { mainListItems, openListItems, closedListItems } from './listItems';
 import SimpleLineChart from './SimpleLineChart';
 import SimpleTable from './SimpleTable';
 
+
+
+import Stringify from 'react-stringify'
+
+
+// import * as actionCreators from '../actions';
+// import { connect } from 'react-redux';
+
+
 const drawerWidth = 240;
 
 const styles = theme => ({
@@ -99,7 +108,7 @@ const styles = theme => ({
   },
 });
 
-console.log(mainListItems)
+console.log("Dashboard.js:111: ", mainListItems)
 
 class Dashboard extends React.Component {
   state = {
@@ -118,7 +127,9 @@ class Dashboard extends React.Component {
     const { classes } = this.props;
 
     return (
+      
       <div className={classes.root}>
+      {/* <Stringify value={props.btc_price} space="💩" /> */}
         <CssBaseline />
         <AppBar
           position="absolute"
@@ -189,13 +200,13 @@ class Dashboard extends React.Component {
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
           <Typography variant="h4" gutterBottom component="h2">
-            Historical Data
+            Historical Price (USD)
           </Typography>
           <Typography component="div" className={classes.chartContainer}>
             <SimpleLineChart />
           </Typography>
           <Typography variant="h4" gutterBottom component="h2">
-            Portflio Performance
+            Performance
           </Typography>
           <div className={classes.tableContainer}>
             <SimpleTable />
@@ -210,4 +221,27 @@ Dashboard.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
+
+
+
+// export default connect (state, actionCreators)(Dashboard);
+
+// connect(mapStateToProps, actionCreators)(Dashboard)
+
+
+// const mapStateToProps=(state) => {
+//   const { userAccount, userPortfolioContracts } = state
+//   return { userAccount, userPortfolioContracts }
+// };
+
+// export default withStyles(styles, mapStateToProps, actionCreators)(Dashboard);
 export default withStyles(styles)(Dashboard);
+
+
+export default compose(
+  withStyles(styles, {
+    name: 'Dashboard',
+  }),
+  withWidth(),
+  connect(),
+)(Dashboard);
